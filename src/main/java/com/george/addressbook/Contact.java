@@ -1,10 +1,10 @@
-package com.teecetest.addressbook;
+package com.george.addressbook;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.teecetest.addressbook.operationstrategy.ContactOperation;
-import com.teecetest.addressbook.operationstrategy.Operation;
+import com.george.addressbook.operationstrategy.ContactOperation;
+import com.george.addressbook.operationstrategy.Operation;
 
 /**
  * This class represents contact entry in a address book.

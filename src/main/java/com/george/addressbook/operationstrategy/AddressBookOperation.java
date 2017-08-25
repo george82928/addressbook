@@ -1,7 +1,7 @@
-package com.teecetest.addressbook.operationstrategy;
+package com.george.addressbook.operationstrategy;
 
-import com.teecetest.addressbook.AddressBook;
-import com.teecetest.addressbook.Contact;
+import com.george.addressbook.AddressBook;
+import com.george.addressbook.Contact;
 
 /**
  * Operations can be done by an address book
@@ -12,6 +12,10 @@ public class AddressBookOperation implements Operation<Contact> {
 
 	private AddressBook addressBook;
 
+	/**
+	 * Constructor of this class
+	 * @param addressBook {@code AddressBook} object
+	 */
 	public AddressBookOperation(AddressBook addressBook) {
 		this.addressBook = addressBook;
 	}

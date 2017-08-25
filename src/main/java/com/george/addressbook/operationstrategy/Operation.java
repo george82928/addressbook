@@ -1,4 +1,4 @@
-package com.teecetest.addressbook.operationstrategy;
+package com.george.addressbook.operationstrategy;
 
 /**
  * Operations that address books and contact entries can do

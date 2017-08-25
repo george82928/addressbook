@@ -1,23 +1,46 @@
 package addressbook;
 
-import com.teecetest.addressbook.AddressBook;
-import com.teecetest.addressbook.Contact;
-import com.teecetest.addressbook.User;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import com.george.addressbook.AddressBook;
+import com.george.addressbook.Contact;
+import com.george.addressbook.User;
 
 import junit.framework.TestCase;
 
-public class AddressBookTest  extends TestCase {
+/**
+ * Unit test of the application
+ * 
+ * @author George Zheng
+ *
+ */
+public class AddressBookTest extends TestCase {
 
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+	private static final String EXPECTED_RESULT_ONE = "George Zheng:0405338692 0410668326";
+	private static final String EXPECTED_RESULT_TWO = "James Bond:00000000";
+	private static final String EXPECTED_RESULT_THREE = "George Zheng:0405338692 0409526365 0410668326";
+	private static final String EXPECTED_RESULT_FOUR = "William Wallace:911";
+	
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
+		System.setOut(new PrintStream(outContent));
+	    System.setErr(new PrintStream(errContent));
 	}
 	
 	@Override
 	protected void tearDown() throws Exception {
 		super.tearDown();
+		System.setOut(null);
+		System.setErr(null);
 	}
 	
+	/**
+	 * Test user can add new entry to contact
+	 */
 	public void testUserCanAddNewContactEntry()
 	{
 		AddressBook ab1 = new AddressBook("ab1");
@@ -37,6 +60,9 @@ public class AddressBookTest  extends TestCase {
 		assertTrue(ab1.getContacts().contains(contact2));
 	}
 	
+	/**
+	 * Test user can remove existing contact entry
+	 */
 	public void testUserCanRemoveExistingContactEntry() {
 		AddressBook ab1 = new AddressBook("ab1");
 		User user = new User();
@@ -56,7 +82,9 @@ public class AddressBookTest  extends TestCase {
 		assertFalse(ab1.getContacts().contains(contact2));
 	}
 	
-//	should be able to print all contacts in an address book
+	/**
+	 * Test user should be able to print all contacts in address book
+	 */
 	public void testUserCanPrintAllContactsInAddressBook() {
 		
 		AddressBook ab1 = new AddressBook("ab1");
@@ -70,12 +98,14 @@ public class AddressBookTest  extends TestCase {
 		contact2.addPhoneNumber("00000000");
 		ab1.addContact(contact);
 		ab1.addContact(contact2);
-		// TODO
-		System.out.println("****");
 		user.printAllContactsInOneAddressBook(ab1.getName());
-		System.out.println("****");
+		assertTrue(outContent.toString().contains(EXPECTED_RESULT_ONE));
+		assertTrue(outContent.toString().contains(EXPECTED_RESULT_TWO));
 	}
 	
+	/**
+	 * Test user can print unique set of all contacts across multiple address books
+	 */
 	public void testUserCanPrintUniqueSetOfAllContactsAcrossMultiAddressBooks() {
 		User user = new User();
 		
@@ -103,7 +133,8 @@ public class AddressBookTest  extends TestCase {
 		user.addAddressBook(ab2);
 		
 		user.printUniqueSet();
+		assertTrue(outContent.toString().contains(EXPECTED_RESULT_TWO));
+		assertTrue(outContent.toString().contains(EXPECTED_RESULT_THREE));
+		assertTrue(outContent.toString().contains(EXPECTED_RESULT_FOUR));
 	}
-	
-	
 }

@@ -1,10 +1,10 @@
-package com.teecetest.addressbook;
+package com.george.addressbook;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.teecetest.addressbook.operationstrategy.AddressBookOperation;
-import com.teecetest.addressbook.operationstrategy.Operation;
+import com.george.addressbook.operationstrategy.AddressBookOperation;
+import com.george.addressbook.operationstrategy.Operation;
 
 /**
  * This class represents an address book
@@ -72,6 +72,10 @@ public class AddressBook {
 		return name;
 	}
 
+	/**
+	 * Get contacts 
+	 * @return Set of contacts
+	 */
 	public Set<Contact> getContacts() {
 		return contacts;
 	}

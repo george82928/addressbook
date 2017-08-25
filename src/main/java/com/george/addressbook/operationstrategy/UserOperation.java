@@ -1,14 +1,25 @@
-package com.teecetest.addressbook.operationstrategy;
+package com.george.addressbook.operationstrategy;
 
-import com.teecetest.addressbook.AddressBook;
-import com.teecetest.addressbook.User;
+import com.george.addressbook.AddressBook;
+import com.george.addressbook.User;
 
+/**
+ * Operations can be done by a user
+ * @author George Zheng
+ *
+ */
 public class UserOperation implements Operation<AddressBook> {
 
 	private User user;
+	
+	/**
+	 * Constructor of this class
+	 * @param user {@code User} object
+	 */
 	public UserOperation(User user) {
 		this.user = user;
 	}
+	
 	@Override
 	public void add(AddressBook t) {
 		if (!exist(t)) {

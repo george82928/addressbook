@@ -1,11 +1,20 @@
-package com.teecetest.addressbook.operationstrategy;
+package com.george.addressbook.operationstrategy;
 
-import com.teecetest.addressbook.Contact;
+import com.george.addressbook.Contact;
 
+/**
+ * Operations can be done by a Contact
+ * 
+ * @author George Zheng
+ */
 public class ContactOperation implements Operation<String> {
 
 	private Contact contact;
 
+	/**
+	 * Constructor of this class
+	 * @param contact Contact object
+	 */
 	public ContactOperation(Contact contact) {
 		this.contact = contact;
 	}
@@ -22,8 +31,9 @@ public class ContactOperation implements Operation<String> {
 
 	@Override
 	public void print() {
-		System.out.println(contact.getName() + " has the following phone number: ");
-		contact.getPhoneNumbers().stream().forEach(System.out::println);
+		System.out.print(contact.getName() + ":");
+		contact.getPhoneNumbers().stream().sorted().forEach(p -> System.out.print(p + " "));
+		System.out.println();
 	}
 
 	@Override
