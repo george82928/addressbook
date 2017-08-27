@@ -12,3 +12,6 @@ As a manager I would like an address book application on my PC so that I can kee
 1. A working user interface is not required, nor the use of any frameworks.  
 
 We are looking for all acceptance criteria to be demonstrable through tests
+
+## How to verify the result ##
+Just run AddressBookTest.java as junit test and see if the test is passing or not.
